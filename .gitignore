@@ -1,4 +1,5 @@
 long_to_wide.log
 colo829_G1_1k_node_cnv_calls.bed
 wide_matrices/*
+gene_matrices/*
 wide_to_genes_minus_R.sh
