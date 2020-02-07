@@ -27,3 +27,9 @@ Gene x cell matrices will now be available per chromosome for chr 1-22 under gen
 Clean up by removing wide matrices, which we do not need anymore.
 
 	rm -r wide_matrices
+
+Concatenate across all chromosome-level gene x cell matrices, then can remove those files as well.
+
+	for chr in {1..22};do cat gene_matrices/copy_number_genes_chrom_${chr}.csv;done | awk '!seen[$0]++' | sort -t ',' -k1,1 > gene_by_cell_matrix.csv #awk command gets unique values without sorting.
+	gzip gene_by_cell_matrix.csv
+	rm -r gene_matrices
