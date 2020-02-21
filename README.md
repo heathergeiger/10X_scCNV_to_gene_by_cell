@@ -2,7 +2,9 @@ Scripts to run on 10X single-cell CNV output by CellRanger DNA pipeline.
 
 Result will be a gene x cell matrix.
 
-Included is a BED file CellRanger_RNA_genes.bed with gene coordinates for the gene annotation from the CellRanger single-cell RNA pipeline, GRCh38.
+Included are BED files GRCh37_CellRanger_RNA_genes.bed and GRCh38_CellRanger_RNA_genes.bed with gene coordinates for the gene annotation from the CellRanger single-cell RNA pipeline for each genome.
+
+Here, we will use the GRCh37 version b/c that is the genome used to align colo829.
 
 Can run script Ensembl_gtf_to_gene_coordinates_bed.sh to get a similar file for different annotation.
 
@@ -21,7 +23,7 @@ So need to run on each chromosome in a for loop.
 Also need BEDtools installed and in the PATH before this.
 
 	mkdir gene_matrices
-	for chr in {1..22};do ./wide_to_genes.sh CellRanger_RNA_genes.bed wide_matrices $chr gene_matrices;echo Chromosome $chr gene x cell complete;done
+	for chr in {1..22};do ./wide_to_genes.sh GRCh37_CellRanger_RNA_genes.bed wide_matrices $chr gene_matrices;echo Chromosome $chr gene x cell complete;done
 
 Gene x cell matrices will now be available per chromosome for chr 1-22 under gene_matrices directory.
 Clean up by removing wide matrices, which we do not need anymore.
